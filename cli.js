@@ -1,7 +1,8 @@
 #!/usr/bin/env node
 var multiline = require('multiline'),
     fs = require('fs'),
-    formats = require('./lib/formats'),
+    tito = require('./'),
+    formats = tito.formats,
     $0 = 'tito',
     yargs = require('yargs')
       .usage($0 + ' [options] [input] [output]')
@@ -22,10 +23,17 @@ var multiline = require('multiline'),
       .describe('map', 'map input to this data expression')
         .alias('map', 'm')
       .describe('help', 'Show this help message.')
+      .describe('version', 'Print the version and exit')
+        .alias('version', 'v')
       .alias('help', 'h')
       .wrap(72),
     options = yargs.argv,
     args = options._;
+
+if (options.version) {
+  console.log($0, 'v' + tito.version);
+  return process.exit(0);
+}
 
 if (options.help) {
   yargs.showHelp();
