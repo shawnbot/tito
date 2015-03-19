@@ -1,8 +1,8 @@
 {
   "name": "tito",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "",
-  "main": "yargs.js",
+  "main": "index.js",
   "bin": {
     "tito": "./cli.js"
   },
