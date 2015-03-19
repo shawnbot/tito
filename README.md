@@ -4,7 +4,7 @@ formats such as CSV, TSV, and JSON. It stands for **T**ables **I**n,
 **T**ables **O**ut.
 
 ## Installation
-Install it with:
+Install it with [npm](https://www.npmjs.com/package/tito):
 
 ```
 npm install -g tito
