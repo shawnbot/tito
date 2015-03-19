@@ -1,0 +1,22 @@
+{
+  "name": "tito",
+  "version": "1.0.0",
+  "description": "",
+  "main": "yargs.js",
+  "bin": {
+    "tito": "./cli.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "JSONStream": "^0.10.0",
+    "extend": "^2.0.0",
+    "fast-csv": "^0.6.0",
+    "multiline": "^1.0.2",
+    "ndjson": "^1.3.0",
+    "yargs": "^3.5.4"
+  }
+}
