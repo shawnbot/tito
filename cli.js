@@ -13,10 +13,8 @@ var multiline = require('multiline'),
         .default('write', 'ndjson')
         .alias('write', 'w')
       .describe('in', 'the input filename')
-        .default('in', '/dev/stdin')
         .alias('in', 'i')
       .describe('out', 'the output filename')
-        .default('out', '/dev/stdout')
         .alias('out', 'o')
       .describe('filter', 'filter input by this data expression')
         .alias('filter', 'f')
@@ -44,12 +42,12 @@ if (options.help) {
 delete options._;
 delete options.$0;
 
-var input = fs.createReadStream(options.in),
+var input = options.in || args[0] || '/dev/stdin',
+    output = options.out || args[1] || '/dev/stdout',
     read = formats.createReadStream(options.read),
-    write = formats.createWriteStream(options.write),
-    output = fs.createWriteStream(options.out);
+    write = formats.createWriteStream(options.write);
 
-input
+fs.createReadStream(input)
   .pipe(read)
   .pipe(write)
-  .pipe(output);
+  .pipe(fs.createWriteStream(output));
