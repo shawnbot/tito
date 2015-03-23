@@ -1,12 +1,16 @@
 # tito
-tito is a command-line utility for translating between tabular text data
-formats such as CSV, TSV, JSON and HTML tables.
+tito is a command-line utility for translating between tabular text
+data formats such as CSV, TSV, JSON and HTML tables.
 It stands for **T**ables **I**n, **T**ables **O**ut.
 
 ## Formats
-* JSON: structured with [JSONPath] queries and [newline-delimited](http://ndjson.org), which is the default for input and output.
-* Comma-, tab-, and otherwise-delimited text, with support for custom column and row delimiters.
-* HTML tables, with support for targeted parsing with CSS selectors and formatted output.
+* JSON: structured with [JSONPath] queries and
+  [newline-delimited](http://ndjson.org), which is the default for
+  input and output.
+* Comma-, tab-, and otherwise-delimited text, with support for custom
+  column and row delimiters.
+* HTML tables, with support for targeted parsing with CSS selectors
+  and formatted output.
 
 ## Installation
 Install it with [npm](https://www.npmjs.com/package/tito):
@@ -19,17 +23,23 @@ npm install -g tito
 Here are some examples of what tito can do:
 
 ##### Convert CSV to TSV
-Use the `--read` and `--write` options to set the read and write formats:
+Use the `--read` and `--write` options to set the read and write
+formats:
+
 ```sh
 tito --read csv data.csv --write tsv data.tsv
 ```
+
 Or pipe data into and out of tito via stdio:
+
 ```sh
 cat data.csv | tito --read csv --write tsv > data.tsv
 ```
 
 ##### Turn HTML tables into CSV
-tito's `html` reader uses a [streaming HTML parser] and can target tables with CSS selectors:
+tito's `html` reader uses a [streaming HTML parser] and can target
+tables with CSS selectors:
+
 ```sh
 curl -s "http://www.federalreserve.gov/releases/h15/current/" \
   | tito --read.format html --read.selector 'table.statistics' --write csv \
@@ -38,6 +48,7 @@ curl -s "http://www.federalreserve.gov/releases/h15/current/" \
 
 ##### Import structured JSON data from a URL into dat
 tito can take structured JSON like this:
+
 ```js
 {
   "results": [
@@ -46,7 +57,12 @@ tito can take structured JSON like this:
   ]
 }
 ```
-and turn it into [newline-delimited JSON]. Just set `--read.format` to `json` and `--read.path` to the [JSONPath] expression of your data elements. For the structure above, which is common to many REST APIs, you would use `results.*`. You could then use the following to import data from one such API into [dat]:
+
+and turn it into [newline-delimited JSON]. Just set `--read.format`
+to `json` and `--read.path` to the [JSONPath] expression of your data
+elements. For the structure above, which is common to many REST APIs,
+you would use `results.*`. You could then use the following to import
+data from one such API into [dat]:
 
 ```sh
 curl -s http://api.data.gov/some-data \
