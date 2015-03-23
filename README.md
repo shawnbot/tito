@@ -3,6 +3,11 @@ tito is a command-line utility for translating between tabular text data
 formats such as CSV, TSV, JSON and HTML tables.
 It stands for **T**ables **I**n, **T**ables **O**ut.
 
+## Formats
+* JSON: structured with [JSONPath] queries and [newline-delimited](http://ndjson.org), which is the default for input and output.
+* Comma-, tab-, and otherwise-delimited text, with support for custom column and row delimiters.
+* HTML tables, with support for targeted parsing with CSS selectors and formatted output.
+
 ## Installation
 Install it with [npm](https://www.npmjs.com/package/tito):
 
@@ -10,7 +15,47 @@ Install it with [npm](https://www.npmjs.com/package/tito):
 npm install -g tito
 ```
 
+## Examples
+Here are some examples of what tito can do:
+
+##### Convert CSV to TSV
+Use the `--read` and `--write` options to set the read and write formats:
+```sh
+tito --read csv data.csv --write tsv data.tsv
+```
+Or pipe data into and out of tito via stdio:
+```sh
+cat data.csv | tito --read csv --write tsv > data.tsv
+```
+
+##### Turn HTML tables into CSV
+tito's `html` reader uses a [streaming HTML parser] and can target tables with CSS selectors:
+```sh
+curl -s "http://www.federalreserve.gov/releases/h15/current/" \
+  | tito --read.format html --read.selector 'table.statistics' --write csv \
+  > interest-rates.csv
+```
+
+##### Import structured JSON data from a URL into dat
+tito can take structured JSON like this:
+```js
+{
+  "results": [
+    { /* ... */ },
+    // etc.
+  ]
+}
+```
+and turn it into [newline-delimited JSON]. Just set `--read.format` to `json` and `--read.path` to the [JSONPath] expression of your data elements. For the structure above, which is common to many REST APIs, you would use `results.*`. You could then use the following to import data from one such API into [dat]:
+
+```sh
+curl -s http://api.data.gov/some-data \
+  | tito --read.format json --read.path 'results.*' \
+  | dat import
+```
+
 ## Usage
+This is the output of `tito --help formats`:
 ```
 tito [options] [input] [output]
 
@@ -65,3 +110,8 @@ If you wish to specify format options, you must use the dot notation:
   - "indent", "i": indent HTML with this string  (write-only)
   - "selector", "s": the CSS selector of the table to target  (read-only)
 ```
+
+[dat]: http://dat-data.com/
+[newline-delimited JSON]: http://ndjson.org/
+[JSONPath]: http://jsonpath.curiousconcept.com/
+[streaming HTML parser]: https://www.npmjs.com/package/htmlparser2
