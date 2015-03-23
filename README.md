@@ -85,30 +85,29 @@ If you wish to specify format options, you must use the dot notation:
 
 "csv": Read and write comma-separated (or otherwise-delimted) text
   Options:
-  - "delimiter", "delim", "d": The field delimiter 
-  - "newline", "line", "n": The row delimiter 
-  - "quote", "q": The quote character 
+  - "delimiter", "delim", "d": The field delimiter
+  - "newline", "line", "n": The row delimiter
+  - "quote", "q": The quote character
 
 "tsv": Read and write tab-separated values
   Options:
-  - "headers":  
-  - "delimiter", "delim", "d":  
-  - "newline", "line", "n":  
+  - "headers": 
+  - "newline", "line", "n": The line separator character sequence
 
 "ndjson": Read and write newline-delimted JSON
   Options:
 
 "json": Read and write arrays from streaming JSON
   Options:
-  - "path", "p":  
-  - "open", "o":  
-  - "separator", "sep", "s":  
-  - "close", "c":  
+  - "path", "p": The JSONPath selector containing the data (read-only)
+  - "open", "o": Output this string before streaming items (write-only)
+  - "separator", "sep", "s": Output this string between items (write-only)
+  - "close", "c": Output this string after writing all items (write-only)
 
 "html": Read and write data from HTML tables
   Options:
-  - "indent", "i": indent HTML with this string  (write-only)
-  - "selector", "s": the CSS selector of the table to target  (read-only)
+  - "selector", "s": the CSS selector of the table to target (read-only)
+  - "indent", "i": indent HTML with this string (write-only)
 ```
 
 [dat]: http://dat-data.com/
