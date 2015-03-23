@@ -1,7 +1,7 @@
 # tito
 tito is a command-line utility for translating between tabular text data
-formats such as CSV, TSV, and JSON. It stands for **T**ables **I**n,
-**T**ables **O**ut.
+formats such as CSV, TSV, JSON and HTML tables.
+It stands for **T**ables **I**n, **T**ables **O**ut.
 
 ## Installation
 Install it with [npm](https://www.npmjs.com/package/tito):
