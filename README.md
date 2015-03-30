@@ -70,6 +70,16 @@ curl -s http://api.data.gov/some-data \
   | dat import
 ```
 
+##### Modify, filter and map with `data-expression`
+The [data-expression] module's `datex` CLI tool takes newline-delimited JSON,
+which means that you can do things like this:
+
+```sh
+tito --read csv data.csv \
+  | datex --filter 'type === "foo"' \
+  | tito --write csv > foo.csv
+```
+
 ## Usage
 This is the output of `tito --help formats`:
 ```
@@ -130,3 +140,4 @@ If you wish to specify format options, you must use the dot notation:
 [newline-delimited JSON]: http://ndjson.org/
 [JSONPath]: http://jsonpath.curiousconcept.com/
 [streaming HTML parser]: https://www.npmjs.com/package/htmlparser2
+[data-expression]: https://github.com/shawnbot/data-expression
