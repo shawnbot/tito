@@ -1,0 +1,49 @@
+html, body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+header {
+  background: yellow;
+}
+
+main {
+}
+
+footer {
+  background: #eee;
+}
+
+header {
+  font-family: "Andale Mono", "Courier New", monospace;
+}
+
+h1 {
+  font-size: 4rem;
+  line-height: 1em;
+  margin: 0;
+}
+
+h2 {
+  font-size: 3rem;
+  line-height: 1em;
+  margin: 0;
+}
+
+.container {
+  margin: 0 auto;
+  padding: 1rem;
+  max-width: 800px;
+}
+
+@import url(github.css);
+
+.highlight pre {
+  padding: 1rem;
+  background: #f7f7f7;
+  overflow: auto;
+}

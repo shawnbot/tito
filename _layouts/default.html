@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>{{ site.name }} / {{ page.title }}</title>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <meta property="og:url" content="{{ site.url }}{% if page.url %}{{ page.url | remove: 'index.html' }}{% endif %}">
+    <meta property="og:site_name" content="{{ site.name }}">
+    <meta property="og:title" content="{{ page.title }}">
+    <meta property="og:type" content="blog">
+    <meta property="og:description" content="{% if page.excerpt %}{{ page.excerpt | strip_html }}{% else %}{{ site.description }}{% endif %}">
+
+    <link rel="stylesheet" href="/css/main.css">
+    {% for sheet in page.styles %}
+      <link rel="stylesheet" href="{{ sheet }}">
+    {% endfor %}
+    {% for script in page.scripts %}
+      <script src="{{ script }}"></script>
+    {% endfor %}
+  </head>
+  <body id="{{ page.body_id }}" class="{{ page.body_class }}">
+    <header>
+      <div class="container">
+        <h1>TITO</h1>
+        <h2>Tables In, Tables Out</h2>
+      </div>
+    </header>
+
+    <main>
+      <div class="container">
+        {{ content }}
+      </div>
+    </main>
+
+    <footer>
+      <div class="container">
+      </div>
+    </footer>
+  </body>
+</html>
