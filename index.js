@@ -1,4 +1,7 @@
+var formats = require('./lib/formats');
 module.exports = {
   version: require('./package.json').version,
-  formats: require('./lib/formats')
+  formats: formats,
+  createReadStream: formats.createReadStream,
+  createWriteStream: formats.createWriteStream
 };
