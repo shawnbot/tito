@@ -1,12 +1,11 @@
 # tito
-tito is a command-line utility for translating between tabular text
-data formats such as CSV, TSV, JSON and HTML tables.
-It stands for **T**ables **I**n, **T**ables **O**ut.
+tito is a Node.js module and command-line utility for translating
+between tabular text streams in formats such as CSV, TSV, JSON
+and HTML tables. It stands for **T**ables **I**n, **T**ables **O**ut.
 
 ## Formats
-* JSON: structured with [JSONPath] queries and
-  [newline-delimited](http://ndjson.org), which is the default for
-  input and output.
+* JSON: structured with [JSONPath] queries or
+  [newline-delimited](http://ndjson.org) (the default for input and output).
 * Comma-, tab-, and otherwise-delimited text, with support for custom
   column and row delimiters.
 * HTML tables, with support for targeted parsing with CSS selectors
