@@ -1,5 +1,8 @@
 #!/usr/bin/env node
 var $0 = 'tito';
+var tito = require('./');
+var formats = tito.formats;
+
 var yargs = require('yargs')
   .usage($0 + ' [options] [input] [output]')
   .describe('read', 'the input format (see below)')
@@ -37,8 +40,6 @@ if (options.help) {
 }
 
 var fs = require('fs');
-var tito = require('./');
-var formats = tito.formats;
 
 delete options._;
 delete options.$0;
