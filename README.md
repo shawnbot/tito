@@ -69,14 +69,34 @@ curl -s http://api.data.gov/some-data \
   | dat import
 ```
 
-##### Modify, filter and map with `data-expression`
-The [data-expression] module's `datex` CLI tool takes newline-delimited JSON,
-which means that you can do things like this:
+##### Map and filter your data
+The tito `--map` and `--filter` options allow you to perform streaming
+transformations on your data. Both options can either be specified as
+[fof-compatible expressions](https://github.com/shawnbot/fof#api) or filenames.
 
 ```sh
-tito --read csv data.csv \
-  | datex --filter 'type === "foo"' \
-  | tito --write csv > foo.csv
+tito --filter 'd => d.Year > 2000' \
+  --map 'd => {{year: d.Year, region: d.Region, revenue: +d.Revenue}}' \
+  --read csv data.csv
+```
+
+If you specify an existing filename for either `--map` or `--filter`, it will
+be `require()`d and its value passed to `fof()`. This means that you can
+specify map and filter transformations in JSON or JavaScript, e.g.:
+
+```json
+{
+  year: 'd => +d.Year',
+  region: 'Region',
+  revenue: 'd => +d.Revenue'
+}
+```
+
+then, you could use this transformation with:
+
+```sh
+tito --map ./transform.json \
+  --read csv --write json input.csv > output.json
 ```
 
 ## Usage
@@ -139,4 +159,3 @@ If you wish to specify format options, you must use the dot notation:
 [newline-delimited JSON]: http://ndjson.org/
 [JSONPath]: http://jsonpath.curiousconcept.com/
 [streaming HTML parser]: https://www.npmjs.com/package/htmlparser2
-[data-expression]: https://github.com/shawnbot/data-expression
