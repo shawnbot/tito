@@ -61,7 +61,7 @@ if (options.map || options.filter) {
   }
   var filter = options.filter;
   if (fs.existsSync(filter)) {
-    map = relative(filter, process.cwd());
+    filter = relative(filter, process.cwd());
   }
 
   var transform = fof.stream(map, {
