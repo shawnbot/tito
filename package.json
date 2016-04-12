@@ -17,7 +17,7 @@
     "type": "git",
     "url": "https://github.com/shawnbot/tito.git"
   },
-  "license": "CC0",
+  "license": "CC0-1.0",
   "dependencies": {
     "JSONStream": "^0.10.0",
     "extend": "^2.0.0",
