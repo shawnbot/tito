@@ -53,14 +53,15 @@ var stream = fs.createReadStream(input)
 
 if (options.map || options.filter) {
   var fof = require('fof');
+  var relative = require('require-relative');
 
   var map = options.map;
   if (fs.existsSync(map)) {
-    map = require(map);
+    map = relative(map, process.cwd());
   }
   var filter = options.filter;
   if (fs.existsSync(filter)) {
-    map = require(filter);
+    map = relative(filter, process.cwd());
   }
 
   var transform = fof.stream(map, {
