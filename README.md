@@ -84,7 +84,7 @@ If you specify an existing filename for either `--map` or `--filter`, it will
 be `require()`d and its value passed to `fof()`. This means that you can
 specify map and filter transformations in JSON or JavaScript, e.g.:
 
-```json
+```js
 {
   year: 'd => +d.Year',
   region: 'Region',
