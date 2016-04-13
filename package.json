@@ -20,6 +20,7 @@
   "license": "CC0-1.0",
   "dependencies": {
     "JSONStream": "^0.10.0",
+    "epipebomb": "^0.1.1",
     "extend": "^2.0.0",
     "fast-csv": "^0.6.0",
     "fof": "^1.2.0",

@@ -43,6 +43,9 @@ if (options.help) {
 
 var fs = require('fs');
 
+// hush EPIPE errors
+require('epipebomb')();
+
 delete options._;
 delete options.$0;
 
