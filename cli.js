@@ -56,10 +56,11 @@ if (options.map || options.filter) {
   var fof = require('fof');
   var expr = require('./lib/require-expression');
 
-  var map = expr(options.map);
-  var filter = expr(options.filter);
+  var map = options.map ? expr(options.map) : null;
+  var filter = options.filter ? expr(options.filter) : null;
   var transform = fof.stream(map, {
-    filter: filter
+    filter: filter,
+    multiple: options.multiple
   });
 
   stream = stream.pipe(transform);
